@@ -10,8 +10,11 @@
       <router-link to="/blog">Blog</router-link>
     </div>
     <div class="user-links">
-      <router-link to="/registration"></router-link>
-      <button><img src="../assets/user.svg" alt="" /></button>
+      <button>
+        <router-link to="/login"
+          ><img src="../assets/user.svg" alt=""
+        /></router-link>
+      </button>
       <button><img src="../assets/search.svg" alt="" /></button>
       <button><img src="../assets/shop.svg" alt="" /></button>
     </div>

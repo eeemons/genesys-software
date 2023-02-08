@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import ShopView from "../views/ShopView.vue";
 import AboutView from "../views/AboutView.vue";
 import BlogView from "../views/BlogView.vue";
+import LoginView from "../views/LoginView.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/blog",
     name: "blog",
     component: BlogView,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: LoginView,
   },
 ];
 
