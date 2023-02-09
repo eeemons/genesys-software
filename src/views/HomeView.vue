@@ -1,5 +1,11 @@
+<script setup>
+import CarouselComponent from "@/components/Carousel/Carousel.vue";
+</script>
+
 <template>
-  <h1>This is the home view</h1>
+  <div class="container">
+    <CarouselComponent />
+  </div>
 </template>
 
-<script></script>
+<style scoped></style>

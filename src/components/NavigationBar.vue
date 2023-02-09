@@ -26,7 +26,7 @@ button {
   all: unset;
 }
 nav {
-  width: 100vwmin !important;
+  width: 100vmax !important;
   /* border: 1px solid black; */
   justify-content: space-evenly;
   display: flex;
