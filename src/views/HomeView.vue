@@ -2,6 +2,7 @@
 import CarouselComponent from "@/components/Carousel/Carousel.vue";
 import Card from "@/components/Card.vue";
 import ProductGrid from "@/components/ProductGrid.vue";
+import FooterComponent from "@/components/FooterComponent.vue";
 
 let hidden = false;
 const toggleHidden = () => {
@@ -28,6 +29,7 @@ const toggleHidden = () => {
     <button @click="toggleHidden()">View all</button>
 
     <ProductGrid />
+    <FooterComponent />
   </div>
 </template>
 
