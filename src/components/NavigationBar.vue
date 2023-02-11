@@ -8,7 +8,7 @@ import DropdownMenu from "./DropdownMenu.vue";
       <span>Lighteniam</span>
     </div>
     <router-link class="no-decoration" to="/">Home</router-link>
-    <DropdownMenu />
+    <DropdownMenu class="no-decoration" />
     <router-link class="no-decoration" to="/about">About</router-link>
     <router-link class="no-decoration" to="/blog">Blog</router-link>
     <div class="user-links">
@@ -50,5 +50,23 @@ nav {
   font-size: 33px;
   font-weight: 700;
   cursor: pointer;
+}
+@media screen and (max-width: 1200px) {
+  nav {
+    display: flex;
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 615px) {
+  .no-decoration {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .user-links > * {
+    margin: 10px;
+    cursor: pointer;
+  }
 }
 </style>
