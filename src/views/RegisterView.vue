@@ -3,29 +3,53 @@
     <div class="center-items">
       <div class="inner-container">
         <h2>Register Your Account</h2>
-        <form action="submit">
+        <form @submit.prevent>
           <div class="name-input">
             <input
               type="text"
               name=""
               id=""
-              class="first-input"
-              placeholder="First Name"
+              :class="`first-input ${errors.firstName ? 'is-invalid' : ''}`"
+              :placeholder="`First Name ${
+                errors.firstName ? 'is not valid' : ''
+              }`"
+              v-model="firstName"
             />
-            <input type="text" name="" id="" placeholder="Last Name" />
+            <!-- <div class="invalid-feedback">{{ errors.firstName }}</div> -->
+            <input
+              type="text"
+              name=""
+              id=""
+              :class="`${errors.lastName ? 'is-invalid' : ''}`"
+              :placeholder="`Last Name ${
+                errors.lastName ? 'is not valid' : ''
+              }`"
+              v-model="lastName"
+            />
+            <!-- <div class="invalid-feedback">{{ errors.lastName }}</div> -->
           </div>
           <div class="email-password">
             <input
               type="email"
               name=""
               id=""
-              class="first-input"
-              placeholder="Email"
+              :class="`first-input ${errors.email ? 'is-invalid' : ''}`"
+              :placeholder="`Email ${errors.email ? 'is not valid' : ''}`"
+              v-model="email"
             />
-            <input type="text" name="" id="" placeholder="Password" />
+            <!-- <div class="invalid-feedback">{{ errors.email }}</div> -->
+            <input
+              type="text"
+              name=""
+              id=""
+              :class="`${errors.password ? 'is-invalid' : ''}`"
+              :placeholder="`Password ${errors.password ? 'is not valid' : ''}`"
+              v-model="password"
+            />
+            <!-- <div class="invalid-feedback">{{ errors.password }}</div> -->
           </div>
         </form>
-        <button>Register</button>
+        <button @click="registerUser">Register</button>
         <br />
         <RouterLink to="/login" class="no-decoration">Cancel</RouterLink>
       </div>
@@ -34,8 +58,48 @@
   <FooterComponent />
 </template>
 
-<script setup>
+<script>
 import FooterComponent from "@/components/FooterComponent.vue";
+import FormValidation from "@/validation/FormValidation.js";
+export default {
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      errors: {},
+      users: [],
+    };
+  },
+  components: { FooterComponent },
+  methods: {
+    registerUser() {
+      let user = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password,
+      };
+      const { isInvalid, errors } = FormValidation(user);
+      if (isInvalid) {
+        this.errors = errors;
+      } else {
+        this.errors = {};
+        if (localStorage.users) {
+          let localStorageUsers = localStorage.users;
+          this.users = JSON.parse(localStorageUsers);
+        }
+        this.users.push(user);
+        localStorage.setItem("users", JSON.stringify(this.users));
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.password = "";
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -71,5 +135,8 @@ button {
 }
 .first-input {
   margin-left: 0;
+}
+.is-invalid {
+  border: 1px solid red;
 }
 </style>
