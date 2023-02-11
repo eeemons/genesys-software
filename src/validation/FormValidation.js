@@ -9,10 +9,10 @@ const formValidator = (data) => {
     errors.lastName = "Last name required";
   }
   if (validator.isEmpty(email)) {
-    errors.email = "email name required";
+    errors.email = "email required";
   }
   if (validator.isEmpty(password)) {
-    errors.password = "password name required";
+    errors.password = "password required";
   }
   return {
     isInvalid: Object.keys(errors).length > 0,

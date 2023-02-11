@@ -4,25 +4,30 @@
       <div class="form-detail">
         <h2>Login</h2>
         <br />
-        <form action="submit">
+        <form novalidate @submit.prevent>
           <div class="login-credential">
             <div>
               <input
                 type="email"
                 name=""
                 id=""
-                class="user"
+                :class="`user ${errors.email ? 'is-invalid' : ''}`"
                 placeholder="Enter your email address"
+                v-model="email"
               />
+              <div>{{ errors.email }}</div>
             </div>
             <div class="password-and-account">
               <input
                 type="password"
                 name=""
                 id=""
+                :class="`${errors.password ? 'is-invalid' : ''}`"
                 class="password"
                 placeholder="Enter your password"
+                v-model="password"
               />
+              <div>{{ errors.password }}</div>
               <br />
               <RouterLink to="/forgot_password" class="no-decoration"
                 >Forgot Password</RouterLink
@@ -31,7 +36,7 @@
           </div>
           <br />
           <br />
-          <button>Sign In</button>
+          <button @click="loginUser()">Sign In</button>
           <br />
           <RouterLink to="/register" class="no-decoration"
             >Create Account</RouterLink
@@ -45,8 +50,54 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import FooterComponent from "@/components/FooterComponent.vue";
+import LoginValidation from "@/validation/LoginValidation.js";
+export default {
+  data() {
+    return {
+      email: "",
+      password: "",
+      errors: {},
+    };
+  },
+  components: { FooterComponent },
+  methods: {
+    loginUser() {
+      let credentials = {
+        email: this.email,
+        password: this.password,
+      };
+      const { isInvalid, errors } = LoginValidation(credentials);
+      if (isInvalid) {
+        this.errors = errors;
+      } else {
+        this.errors = {};
+        let localUsers = localStorage.users;
+        localUsers = JSON.parse(localUsers);
+        let emailIndex = localUsers.findIndex(
+          (user) => user.email === credentials.email
+        );
+        if (emailIndex > -1) {
+          let passwordIndex = localUsers.findIndex(
+            (user) => user.password === credentials.password
+          );
+          if (passwordIndex > -1) {
+            let activeUser = localUsers.find(
+              (user) => user.email === credentials.email
+            );
+            localStorage.setItem("activeUser", JSON.stringify(activeUser));
+            this.$router.push("/dashboard");
+          } else {
+            this.errors.password = "Password does not match";
+          }
+        } else {
+          this.errors.email = "Email do not exist";
+        }
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -95,5 +146,8 @@ button {
 .no-decoration {
   all: unset;
   cursor: pointer;
+}
+.is-invalid {
+  border: 1px solid red;
 }
 </style>
