@@ -1,14 +1,16 @@
+<script setup>
+import DropdownMenu from "./DropdownMenu.vue";
+</script>
+
 <template>
   <nav>
     <div class="logo">
       <span>Lighteniam</span>
     </div>
-    <div class="nav-links">
-      <router-link to="/">Home</router-link>
-      <router-link to="/shop">Shop</router-link>
-      <router-link to="/about">About</router-link>
-      <router-link to="/blog">Blog</router-link>
-    </div>
+    <router-link class="no-decoration" to="/">Home</router-link>
+    <DropdownMenu />
+    <router-link class="no-decoration" to="/about">About</router-link>
+    <router-link class="no-decoration" to="/blog">Blog</router-link>
     <div class="user-links">
       <button>
         <router-link to="/login"
@@ -31,8 +33,9 @@ nav {
   justify-content: space-evenly;
   display: flex;
   align-items: center;
+  flex-direction: row;
 }
-.nav-links > * {
+.no-decoration {
   margin: 20px;
   text-decoration: none;
   font-weight: 400;
