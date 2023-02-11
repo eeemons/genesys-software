@@ -84,4 +84,29 @@ li {
 .item-1 {
   margin-left: 0;
 }
+
+@media screen and (max-width: 850px) {
+  .container {
+    grid-template-columns: 2fr 1fr;
+  }
+  .col {
+    height: fit-content;
+    margin: 15px 0 0 15px;
+  }
+  .social-links {
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .container {
+    grid-template-columns: 1fr;
+    overflow: hidden;
+  }
+  .col {
+    height: fit-content;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+}
 </style>
