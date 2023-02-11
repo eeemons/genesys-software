@@ -80,6 +80,7 @@ li {
 }
 .social-links > * {
   margin: 16px;
+  cursor: pointer;
 }
 .item-1 {
   margin-left: 0;
