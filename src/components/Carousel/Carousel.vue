@@ -159,4 +159,10 @@ img {
 .next:hover {
   background-color: rgba(216, 203, 203, 0.9);
 }
+
+@media screen and (max-width: 500px) {
+  .btn-black {
+    margin-left: 0;
+  }
+}
 </style>
