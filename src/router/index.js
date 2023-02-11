@@ -4,6 +4,8 @@ import ShopView from "../views/ShopView.vue";
 import AboutView from "../views/AboutView.vue";
 import BlogView from "../views/BlogView.vue";
 import LoginView from "../views/LoginView.vue";
+import RegisterView from "../views/RegisterView.vue";
+import ForgotPasswordView from "../views/ForgotPasswordView.vue";
 
 const routes = [
   {
@@ -30,6 +32,16 @@ const routes = [
     path: "/login",
     name: "login",
     component: LoginView,
+  },
+  {
+    path: "/register",
+    name: "register",
+    component: RegisterView,
+  },
+  {
+    path: "/forgot_password",
+    name: "forgot_password",
+    component: ForgotPasswordView,
   },
 ];
 

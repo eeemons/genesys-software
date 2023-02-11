@@ -8,7 +8,7 @@
           <div class="login-credential">
             <div>
               <input
-                type="text"
+                type="email"
                 name=""
                 id=""
                 class="user"
@@ -24,14 +24,18 @@
                 placeholder="Enter your password"
               />
               <br />
-              <a href="">Forgot password</a>
+              <RouterLink to="/forgot_password" class="no-decoration"
+                >Forgot Password</RouterLink
+              >
             </div>
           </div>
           <br />
           <br />
           <button>Sign In</button>
           <br />
-          <a href="">Create Account</a>
+          <RouterLink to="/register" class="no-decoration"
+            >Create Account</RouterLink
+          >
         </form>
       </div>
     </div>
@@ -86,5 +90,10 @@ button {
 .form-detail {
   /* border: 1px solid yellow; */
   width: fit-content;
+}
+
+.no-decoration {
+  all: unset;
+  cursor: pointer;
 }
 </style>
