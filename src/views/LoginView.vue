@@ -88,7 +88,7 @@ export default {
             );
             localStorage.setItem("activeUser", JSON.stringify(activeUser));
             this.$router.push("/dashboard");
-            window.location.reload();
+            // window.location.reload();
           } else {
             this.errors.password = "Password does not match";
           }
