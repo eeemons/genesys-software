@@ -3,6 +3,7 @@
     <div class="login-form">
       <div class="form-detail">
         <h2>Login</h2>
+        <p>Please use admin credentials for the user details to be visible</p>
         <br />
         <form novalidate @submit.prevent>
           <div class="login-credential">
@@ -56,8 +57,8 @@ import LoginValidation from "@/validation/LoginValidation.js";
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      email: "admin@admin.com",
+      password: "admin",
       errors: {},
     };
   },
