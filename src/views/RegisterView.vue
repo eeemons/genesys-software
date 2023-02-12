@@ -139,4 +139,24 @@ button {
 .is-invalid {
   border: 1px solid red;
 }
+@media screen and (max-width: 690px) {
+  input {
+    margin: 10px 0;
+  }
+  .inner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .name-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .email-password {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
 </style>

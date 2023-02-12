@@ -151,4 +151,10 @@ button {
 .is-invalid {
   border: 1px solid red;
 }
+@media screen and (max-width: 665px) {
+  .login-credential {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>
