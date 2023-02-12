@@ -55,6 +55,7 @@ nav {
   nav {
     display: flex;
     justify-content: flex-start;
+    align-items: center;
   }
 }
 @media screen and (max-width: 615px) {

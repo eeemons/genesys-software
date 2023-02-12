@@ -125,4 +125,11 @@ button {
 .transparency:hover:before {
   opacity: 1;
 }
+
+@media screen and (max-width: 770px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
 </style>
